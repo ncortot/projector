@@ -31,20 +31,33 @@ void display::update_kit(int red, int green, int blue)
 {
   static int direction;
   static int channel = 0;
-  int power;
+
+  int p_red = getPower(red);
+  int p_green = getPower(green);
+  int p_blue = getPower(blue);
 
   Tlc.clear();
 
-  Tlc.set(channel + 1, getPower(green));
-  Tlc.set(channel + 2, getPower(blue));
-  Tlc.set(channel + 3, getPower(red));
-
   if (channel == 0) {
     direction = 4;
+  } else {
+    Tlc.set(channel - 3, p_green / 4);
+    Tlc.set(channel - 2, p_blue / 4);
+    Tlc.set(channel - 1, p_red / 4);
   }
+
+  Tlc.set(channel + 1, p_green);
+  Tlc.set(channel + 2, p_blue);
+  Tlc.set(channel + 3, p_red);
+
   if (channel == NUM_TLCS * 16 - 4) {
     direction = -4;
+  } else {
+    Tlc.set(channel + 5, p_green / 4);
+    Tlc.set(channel + 6, p_blue / 4);
+    Tlc.set(channel + 7, p_red / 4);
   }
+
   channel += direction;
 
   Tlc.update();
