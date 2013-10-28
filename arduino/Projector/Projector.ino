@@ -22,6 +22,34 @@ void setup()
 }
 
 
+bool parse_arg_string(String &input, int &start_index, int &end_index, String &value)
+{
+  if (start_index < 0)
+    return false;
+
+  end_index = input.indexOf(' ', start_index);
+  if (end_index > 0) {
+    value = input.substring(start_index, end_index);
+    start_index = end_index + 1;
+  } else {
+    value = input.substring(start_index);
+    start_index = -1;
+  }
+  return true;
+}
+
+bool parse_arg_int(String &input, int &start_index, int &end_index, int &value)
+{
+  String arg;
+  if (parse_arg_string(input, start_index, end_index, arg)) {
+    value = arg.toInt();
+    return true;
+  } else {
+    return false;
+  }
+}
+
+
 void loop()
 {
   static uint32_t kit_hold = 0;
@@ -31,111 +59,38 @@ void loop()
   }
 
   while (Console.available() > 0) {
-    String command = Console.readStringUntil('\n');
-    command.trim();
-    if (!command.length()) {
+    String input = Console.readStringUntil('\n');
+    input.trim();
+    if (!input.length()) {
       continue;
     }
 
-    String arg;
-    int i_start = 0;
-    int i_end = command.indexOf(' ', i_start);
-    if (i_end > 0) {
-      arg = command.substring(i_start, i_end);
-      i_start = i_end + 1;
-    } else {
-      arg = command.substring(i_start);
-    }
-    arg.toUpperCase();
+    String command;
+    int start_index = 0;
+    int end_index = -1;
+    parse_arg_string(input, start_index, end_index, command);
+    command.toUpperCase();
 
-    if (arg == "BEEP") {
-      uint32_t frequency = 880;
-      uint16_t duration = 500;
-      uint8_t volume = 128;
+    if (command == "BEEP") {
+      int frequency = 880;
+      int duration = 500;
+      int volume = 255;
 
-      if (i_end > 0) {
-        int i_end = command.indexOf(' ', i_start);
-        if (i_end > 0) {
-          arg = command.substring(i_start, i_end);
-          i_start = i_end + 1;
-        } else {
-          arg = command.substring(i_start);
-        }
-        frequency = arg.toInt();
-      }
- 
-      if (i_end > 0) {
-        int i_end = command.indexOf(' ', i_start);
-        if (i_end > 0) {
-          arg = command.substring(i_start, i_end);
-          i_start = i_end + 1;
-        } else {
-          arg = command.substring(i_start);
-        }
-        duration = arg.toInt();
-      }
- 
-      if (i_end > 0) {
-        int i_end = command.indexOf(' ', i_start);
-        if (i_end > 0) {
-          arg = command.substring(i_start, i_end);
-          i_start = i_end + 1;
-        } else {
-          arg = command.substring(i_start);
-        }
-        volume = arg.toInt();
-      }
+      parse_arg_int(input, start_index, end_index, frequency);
+      parse_arg_int(input, start_index, end_index, duration);
+      parse_arg_int(input, start_index, end_index, volume);
 
       ToneAC4::tone(frequency, duration, volume, true);
-    } else if (arg == "DISPLAY") {
-      uint8_t red = 0;
-      uint8_t green = 0;
-      uint8_t blue = 0;
-      uint16_t duration = 1000;
+    } else if (command == "DISPLAY") {
+      int red = 0;
+      int green = 0;
+      int blue = 0;
+      int duration = 1000;
 
-      if (i_end > 0) {
-        int i_end = command.indexOf(' ', i_start);
-        if (i_end > 0) {
-          arg = command.substring(i_start, i_end);
-          i_start = i_end + 1;
-        } else {
-          arg = command.substring(i_start);
-        }
-        red = arg.toInt();
-      }
- 
-      if (i_end > 0) {
-        int i_end = command.indexOf(' ', i_start);
-        if (i_end > 0) {
-          arg = command.substring(i_start, i_end);
-          i_start = i_end + 1;
-        } else {
-          arg = command.substring(i_start);
-        }
-        green = arg.toInt();
-      }
- 
-      if (i_end > 0) {
-        int i_end = command.indexOf(' ', i_start);
-        if (i_end > 0) {
-          arg = command.substring(i_start, i_end);
-          i_start = i_end + 1;
-        } else {
-          arg = command.substring(i_start);
-        }
-        blue = arg.toInt();
-      }
- 
-      if (i_end > 0) {
-        int i_end = command.indexOf(' ', i_start);
-        if (i_end > 0) {
-          arg = command.substring(i_start, i_end);
-          i_start = i_end + 1;
-        } else {
-          arg = command.substring(i_start);
-        }
-        duration = arg.toInt();
-      }
+      parse_arg_int(input, start_index, end_index, red);
+      parse_arg_int(input, start_index, end_index, green);
+      parse_arg_int(input, start_index, end_index, blue);
+      parse_arg_int(input, start_index, end_index, duration);
 
       display::update_all(red, green, blue);
       if (duration) {
@@ -143,18 +98,20 @@ void loop()
       } else {
         kit_hold = 1UL << 31;
       }
-    } else if (arg == "HELP") {
-      Console.println("Available commands: ");
-      Console.println("BEEP [frequency] [duration] [volume]");
-      Console.println("  frequency: integer, in Hz - default 880");
-      Console.println("  duration: interger, in ms - default 500");
-      Console.println("  volume: integer 0-255 - default 128");
-      Console.println("DISPLAY <R> <G> <B> [duration]");
-      Console.println("  R, G, B: color values, 0-255 - default 255, 255, 255");
-      Console.println("  duration: integer, in ms - default 1000");
+    } else if (command == "HELP") {
+      Console.print(F(
+        "Available commands: \n"
+        "BEEP [frequency] [duration] [volume]\n"
+        "  frequency: integer, in Hz - default 880\n"
+        "  duration: interger, in ms - default 500\n"
+        "  volume: integer 0-255 - default 255\n"
+        "DISPLAY <R> <G> <B> [duration]\n"
+        "  R, G, B: color values, 0-255 - default 255, 255, 255\n"
+        "  duration: integer, in ms - default 1000\n"
+      ));
     } else {
-      Console.print("Unknown command: ");
-      Console.print(command);
+      Console.print(F("Unknown command: "));
+      Console.print(input);
       Console.println();
     }
   }
