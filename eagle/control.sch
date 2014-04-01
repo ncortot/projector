@@ -13258,7 +13258,7 @@ will be further integrated into the Sparkfun Library for other footprints.  It c
 <part name="R7" library="resistor" deviceset="R-EU_" device="M1206" value="10K"/>
 <part name="R8" library="resistor" deviceset="R-EU_" device="M1206" value="10K"/>
 <part name="GND10" library="supply1" deviceset="GND" device=""/>
-<part name="R6" library="resistor" deviceset="R-EU_" device="M1206" value="10K"/>
+<part name="R6" library="resistor" deviceset="R-EU_" device="M1206" value="560"/>
 <part name="P+4" library="supply1" deviceset="+5V" device=""/>
 <part name="D1" library="SparkFun-DiscreteSemi" deviceset="DIODE" device="PTH" value="1N4001"/>
 <part name="VREG_5V" library="custom" deviceset="V_REG_78XX" device="T" technology="05" value="LM7805"/>
@@ -13291,8 +13291,8 @@ will be further integrated into the Sparkfun Library for other footprints.  It c
 <instance part="C3" gate="G$1" x="142.24" y="147.32"/>
 <instance part="FRONT_PANEL" gate="G$1" x="220.98" y="96.52"/>
 <instance part="LED_MATRIX" gate="G$1" x="220.98" y="53.34"/>
-<instance part="GND3" gate="1" x="233.68" y="35.56"/>
-<instance part="P+2" gate="1" x="208.28" y="116.84"/>
+<instance part="GND3" gate="1" x="208.28" y="35.56"/>
+<instance part="P+2" gate="1" x="233.68" y="119.38"/>
 <instance part="AUDIO" gate="G$1" x="83.82" y="154.94" rot="R180"/>
 <instance part="R2" gate="G$1" x="68.58" y="152.4"/>
 <instance part="GND5" gate="1" x="60.96" y="147.32"/>
@@ -13366,29 +13366,29 @@ will be further integrated into the Sparkfun Library for other footprints.  It c
 </segment>
 <segment>
 <pinref part="P+2" gate="1" pin="+5V"/>
-<wire x1="208.28" y1="114.3" x2="208.28" y2="93.98" width="0.1524" layer="91"/>
-<pinref part="LED_MATRIX" gate="G$1" pin="15"/>
-<wire x1="208.28" y1="93.98" x2="208.28" y2="91.44" width="0.1524" layer="91"/>
-<wire x1="208.28" y1="91.44" x2="208.28" y2="88.9" width="0.1524" layer="91"/>
-<wire x1="208.28" y1="88.9" x2="208.28" y2="50.8" width="0.1524" layer="91"/>
-<wire x1="208.28" y1="50.8" x2="208.28" y2="48.26" width="0.1524" layer="91"/>
-<wire x1="208.28" y1="48.26" x2="208.28" y2="45.72" width="0.1524" layer="91"/>
-<wire x1="208.28" y1="45.72" x2="213.36" y2="45.72" width="0.1524" layer="91"/>
-<pinref part="LED_MATRIX" gate="G$1" pin="13"/>
-<wire x1="213.36" y1="48.26" x2="208.28" y2="48.26" width="0.1524" layer="91"/>
-<junction x="208.28" y="48.26"/>
-<pinref part="LED_MATRIX" gate="G$1" pin="11"/>
-<wire x1="213.36" y1="50.8" x2="208.28" y2="50.8" width="0.1524" layer="91"/>
-<junction x="208.28" y="50.8"/>
-<pinref part="FRONT_PANEL" gate="G$1" pin="15"/>
-<wire x1="213.36" y1="88.9" x2="208.28" y2="88.9" width="0.1524" layer="91"/>
-<junction x="208.28" y="88.9"/>
-<pinref part="FRONT_PANEL" gate="G$1" pin="13"/>
-<wire x1="213.36" y1="91.44" x2="208.28" y2="91.44" width="0.1524" layer="91"/>
-<junction x="208.28" y="91.44"/>
-<pinref part="FRONT_PANEL" gate="G$1" pin="11"/>
-<wire x1="213.36" y1="93.98" x2="208.28" y2="93.98" width="0.1524" layer="91"/>
-<junction x="208.28" y="93.98"/>
+<wire x1="233.68" y1="116.84" x2="233.68" y2="93.98" width="0.1524" layer="91"/>
+<pinref part="FRONT_PANEL" gate="G$1" pin="12"/>
+<wire x1="233.68" y1="93.98" x2="233.68" y2="91.44" width="0.1524" layer="91"/>
+<wire x1="233.68" y1="91.44" x2="233.68" y2="88.9" width="0.1524" layer="91"/>
+<wire x1="233.68" y1="88.9" x2="233.68" y2="50.8" width="0.1524" layer="91"/>
+<wire x1="233.68" y1="50.8" x2="233.68" y2="48.26" width="0.1524" layer="91"/>
+<wire x1="233.68" y1="48.26" x2="233.68" y2="45.72" width="0.1524" layer="91"/>
+<wire x1="228.6" y1="93.98" x2="233.68" y2="93.98" width="0.1524" layer="91"/>
+<junction x="233.68" y="93.98"/>
+<pinref part="FRONT_PANEL" gate="G$1" pin="14"/>
+<wire x1="228.6" y1="91.44" x2="233.68" y2="91.44" width="0.1524" layer="91"/>
+<junction x="233.68" y="91.44"/>
+<pinref part="FRONT_PANEL" gate="G$1" pin="16"/>
+<wire x1="228.6" y1="88.9" x2="233.68" y2="88.9" width="0.1524" layer="91"/>
+<junction x="233.68" y="88.9"/>
+<pinref part="LED_MATRIX" gate="G$1" pin="12"/>
+<wire x1="228.6" y1="50.8" x2="233.68" y2="50.8" width="0.1524" layer="91"/>
+<junction x="233.68" y="50.8"/>
+<pinref part="LED_MATRIX" gate="G$1" pin="14"/>
+<wire x1="228.6" y1="48.26" x2="233.68" y2="48.26" width="0.1524" layer="91"/>
+<junction x="233.68" y="48.26"/>
+<pinref part="LED_MATRIX" gate="G$1" pin="16"/>
+<wire x1="228.6" y1="45.72" x2="233.68" y2="45.72" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="C2" gate="G$1" pin="+"/>
@@ -13456,30 +13456,30 @@ will be further integrated into the Sparkfun Library for other footprints.  It c
 <pinref part="VREG_3.3V" gate="A1" pin="GND"/>
 </segment>
 <segment>
-<pinref part="FRONT_PANEL" gate="G$1" pin="12"/>
 <pinref part="GND3" gate="1" pin="GND"/>
-<wire x1="228.6" y1="93.98" x2="233.68" y2="93.98" width="0.1524" layer="91"/>
-<wire x1="233.68" y1="93.98" x2="233.68" y2="91.44" width="0.1524" layer="91"/>
-<pinref part="LED_MATRIX" gate="G$1" pin="16"/>
-<wire x1="233.68" y1="91.44" x2="233.68" y2="88.9" width="0.1524" layer="91"/>
-<wire x1="233.68" y1="88.9" x2="233.68" y2="50.8" width="0.1524" layer="91"/>
-<wire x1="233.68" y1="50.8" x2="233.68" y2="48.26" width="0.1524" layer="91"/>
-<wire x1="233.68" y1="48.26" x2="233.68" y2="45.72" width="0.1524" layer="91"/>
-<wire x1="233.68" y1="45.72" x2="233.68" y2="38.1" width="0.1524" layer="91"/>
-<wire x1="228.6" y1="45.72" x2="233.68" y2="45.72" width="0.1524" layer="91"/>
-<junction x="233.68" y="45.72"/>
-<pinref part="LED_MATRIX" gate="G$1" pin="14"/>
-<wire x1="228.6" y1="48.26" x2="233.68" y2="48.26" width="0.1524" layer="91"/>
-<junction x="233.68" y="48.26"/>
-<pinref part="LED_MATRIX" gate="G$1" pin="12"/>
-<wire x1="228.6" y1="50.8" x2="233.68" y2="50.8" width="0.1524" layer="91"/>
-<junction x="233.68" y="50.8"/>
-<pinref part="FRONT_PANEL" gate="G$1" pin="14"/>
-<wire x1="228.6" y1="91.44" x2="233.68" y2="91.44" width="0.1524" layer="91"/>
-<junction x="233.68" y="91.44"/>
-<pinref part="FRONT_PANEL" gate="G$1" pin="16"/>
-<wire x1="228.6" y1="88.9" x2="233.68" y2="88.9" width="0.1524" layer="91"/>
-<junction x="233.68" y="88.9"/>
+<wire x1="208.28" y1="93.98" x2="208.28" y2="91.44" width="0.1524" layer="91"/>
+<pinref part="FRONT_PANEL" gate="G$1" pin="11"/>
+<wire x1="208.28" y1="91.44" x2="208.28" y2="88.9" width="0.1524" layer="91"/>
+<wire x1="208.28" y1="88.9" x2="208.28" y2="50.8" width="0.1524" layer="91"/>
+<wire x1="208.28" y1="50.8" x2="208.28" y2="48.26" width="0.1524" layer="91"/>
+<wire x1="208.28" y1="48.26" x2="208.28" y2="45.72" width="0.1524" layer="91"/>
+<wire x1="208.28" y1="45.72" x2="208.28" y2="38.1" width="0.1524" layer="91"/>
+<wire x1="208.28" y1="93.98" x2="213.36" y2="93.98" width="0.1524" layer="91"/>
+<pinref part="FRONT_PANEL" gate="G$1" pin="13"/>
+<wire x1="208.28" y1="91.44" x2="213.36" y2="91.44" width="0.1524" layer="91"/>
+<junction x="208.28" y="91.44"/>
+<pinref part="FRONT_PANEL" gate="G$1" pin="15"/>
+<wire x1="208.28" y1="88.9" x2="213.36" y2="88.9" width="0.1524" layer="91"/>
+<junction x="208.28" y="88.9"/>
+<pinref part="LED_MATRIX" gate="G$1" pin="11"/>
+<wire x1="208.28" y1="50.8" x2="213.36" y2="50.8" width="0.1524" layer="91"/>
+<junction x="208.28" y="50.8"/>
+<pinref part="LED_MATRIX" gate="G$1" pin="13"/>
+<wire x1="208.28" y1="48.26" x2="213.36" y2="48.26" width="0.1524" layer="91"/>
+<junction x="208.28" y="48.26"/>
+<pinref part="LED_MATRIX" gate="G$1" pin="15"/>
+<wire x1="208.28" y1="45.72" x2="213.36" y2="45.72" width="0.1524" layer="91"/>
+<junction x="208.28" y="45.72"/>
 </segment>
 <segment>
 <pinref part="GND6" gate="1" pin="GND"/>
