@@ -6,7 +6,7 @@
 #include "startup.h"
 #include "toneAC4.h"
 
-#include "Projector.h"
+#include "projector.h"
 
 void setup()
 {

@@ -1,3 +1,4 @@
+#include <Arduino.h>
 #include "toneAC4.h"
 
 // Clock source frequency

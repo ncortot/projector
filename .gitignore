@@ -1,1 +1,2 @@
-/arduino/.build
+/arduino/build
+/env.mk
