@@ -2,16 +2,16 @@
 #include <Console.h>
 #include <Tlc5940.h>
 
+#include "audio.h"
 #include "display.h"
 #include "startup.h"
-#include "toneAC4.h"
 
 #include "projector.h"
 
 void setup()
 {
   Tlc.init();
-  ToneAC4::init();
+  Audio::init();
   pinMode(CORE_LDR, INPUT);
 
   Bridge.begin();
@@ -72,15 +72,9 @@ void loop()
     command.toUpperCase();
 
     if (command == "BEEP") {
-      int frequency = 880;
       int duration = 500;
-      int volume = 255;
-
-      parse_arg_int(input, start_index, end_index, frequency);
       parse_arg_int(input, start_index, end_index, duration);
-      parse_arg_int(input, start_index, end_index, volume);
-
-      ToneAC4::tone(frequency, duration, volume, true);
+      Audio::play(duration);
     } else if (command == "DISPLAY") {
       int red = 0;
       int green = 0;
@@ -101,10 +95,8 @@ void loop()
     } else if (command == "HELP") {
       Console.print(F(
         "Available commands: \n"
-        "BEEP [frequency] [duration] [volume]\n"
-        "  frequency: integer, in Hz - default 880\n"
+        "BEEP [duration]\n"
         "  duration: interger, in ms - default 500\n"
-        "  volume: integer 0-255 - default 255\n"
         "DISPLAY <R> <G> <B> [duration]\n"
         "  R, G, B: color values, 0-255 - default 255, 255, 255\n"
         "  duration: integer, in ms - default 1000\n"

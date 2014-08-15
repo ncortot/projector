@@ -1,16 +1,16 @@
+#include "audio.h"
 #include "display.h"
-#include "toneAC4.h"
 
 #include "startup.h"
 
 
 void audio_splash()
 {
-  ToneAC4::tone(440, 100, 128, false);
-  delay(100);
-  ToneAC4::tone(880, 100, 128, false);
-  delay(100);
-  ToneAC4::tone(1760, 100, 128, false);
+  Audio::play(100);
+  delay(200);
+  Audio::play(500);
+  delay(600);
+  Audio::play(1000);
 }
 
 
